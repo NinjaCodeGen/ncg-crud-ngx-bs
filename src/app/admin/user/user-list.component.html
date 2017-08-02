@@ -1,0 +1,319 @@
+<!--User-->
+    <div class="container">
+      <div class="row">
+        <div class="form-group col-xs-12">
+          <button id="addButton" class="btn button-primary" [routerLink]="['new'] ">Add</button>
+        </div>
+      </div>
+    </div>
+    
+    <parentFilterAndPaging #parentFilterAndPagingRef 
+                       [paginationData]="paginationData" 
+                       [query]="query"
+                       [filterType]="filterType"
+                       [fieldFilterModel]="fieldFilterModel"
+                       [filterValue]="filterValue"
+                       (onListClicked)="getList()" 
+                       (onPageChanged)="pageChanged($event)" 
+                       (onUpdatingSort)="updateSort($event.value)"
+                       (onUpdatingFilter)="updateFilter($event)"> 
+  <!--table-->
+  <div tableToInject class="table-responsive">
+    <table class="table table-striped table-hover table-baddressed">
+      <thead class="thead-default">
+        <tr>
+          <!--actions-->
+          <th style="min-width: 100px;">
+            Actions
+          </th>
+          
+          <!--id-->
+          <th>
+            <button class="btn btn-default" (click)="onColumnHeaderClicked('id')">
+              {{ formMetaData.properties.id['x-ncg'].label }}
+              <i class="glyphicon" [class.glyphicon-arrow-down]="query.orderBy === 'id'"
+                [class.glyphicon-arrow-up]="query.orderBy === 'id desc'"></i>
+            </button>
+          </th>
+          
+          <!--address-->
+          <th>
+            <button class="btn btn-default" (click)="onColumnHeaderClicked('address')">
+              {{ formMetaData.properties.address['x-ncg'].label }}
+              <i class="glyphicon" [class.glyphicon-arrow-down]="query.orderBy === 'address'"
+                [class.glyphicon-arrow-up]="query.orderBy === 'address desc'"></i>
+            </button>
+          </th>
+          
+          <!--age-->
+          <th>
+            <button class="btn btn-default" (click)="onColumnHeaderClicked('age')">
+              {{ formMetaData.properties.age['x-ncg'].label }}
+              <i class="glyphicon" [class.glyphicon-arrow-down]="query.orderBy === 'age'"
+                [class.glyphicon-arrow-up]="query.orderBy === 'age desc'"></i>
+            </button>
+          </th>
+          
+          <!--createdBy-->
+          <th>
+            <button class="btn btn-default" (click)="onColumnHeaderClicked('createdBy')">
+              {{ formMetaData.properties.createdBy['x-ncg'].label }}
+              <i class="glyphicon" [class.glyphicon-arrow-down]="query.orderBy === 'createdBy'"
+                [class.glyphicon-arrow-up]="query.orderBy === 'createdBy desc'"></i>
+            </button>
+          </th>
+          
+          <!--createdDate-->
+          <th>
+            <button class="btn btn-default" (click)="onColumnHeaderClicked('createdDate')">
+              {{ formMetaData.properties.createdDate['x-ncg'].label }}
+              <i class="glyphicon" [class.glyphicon-arrow-down]="query.orderBy === 'createdDate'"
+                [class.glyphicon-arrow-up]="query.orderBy === 'createdDate desc'"></i>
+            </button>
+          </th>
+          
+          <!--emailAddress-->
+          <th>
+            <button class="btn btn-default" (click)="onColumnHeaderClicked('emailAddress')">
+              {{ formMetaData.properties.emailAddress['x-ncg'].label }}
+              <i class="glyphicon" [class.glyphicon-arrow-down]="query.orderBy === 'emailAddress'"
+                [class.glyphicon-arrow-up]="query.orderBy === 'emailAddress desc'"></i>
+            </button>
+          </th>
+          
+          <!--gender-->
+          <th>
+            <button class="btn btn-default" (click)="onColumnHeaderClicked('gender')">
+              {{ formMetaData.properties.gender['x-ncg'].label }}
+              <i class="glyphicon" [class.glyphicon-arrow-down]="query.orderBy === 'gender'"
+                [class.glyphicon-arrow-up]="query.orderBy === 'gender desc'"></i>
+            </button>
+          </th>
+          
+          <!--isActive-->
+          <th>
+            <button class="btn btn-default" (click)="onColumnHeaderClicked('isActive')">
+              {{ formMetaData.properties.isActive['x-ncg'].label }}
+              <i class="glyphicon" [class.glyphicon-arrow-down]="query.orderBy === 'isActive'"
+                [class.glyphicon-arrow-up]="query.orderBy === 'isActive desc'"></i>
+            </button>
+          </th>
+          
+          <!--name-->
+          <th>
+            <button class="btn btn-default" (click)="onColumnHeaderClicked('name')">
+              {{ formMetaData.properties.name['x-ncg'].label }}
+              <i class="glyphicon" [class.glyphicon-arrow-down]="query.orderBy === 'name'"
+                [class.glyphicon-arrow-up]="query.orderBy === 'name desc'"></i>
+            </button>
+          </th>
+          
+          <!--password-->
+          <th>
+            <button class="btn btn-default" (click)="onColumnHeaderClicked('password')">
+              {{ formMetaData.properties.password['x-ncg'].label }}
+              <i class="glyphicon" [class.glyphicon-arrow-down]="query.orderBy === 'password'"
+                [class.glyphicon-arrow-up]="query.orderBy === 'password desc'"></i>
+            </button>
+          </th>
+          
+          <!--phone-->
+          <th>
+            <button class="btn btn-default" (click)="onColumnHeaderClicked('phone')">
+              {{ formMetaData.properties.phone['x-ncg'].label }}
+              <i class="glyphicon" [class.glyphicon-arrow-down]="query.orderBy === 'phone'"
+                [class.glyphicon-arrow-up]="query.orderBy === 'phone desc'"></i>
+            </button>
+          </th>
+          
+          <!--reOrderLevel-->
+          <th>
+            <button class="btn btn-default" (click)="onColumnHeaderClicked('reOrderLevel')">
+              {{ formMetaData.properties.reOrderLevel['x-ncg'].label }}
+              <i class="glyphicon" [class.glyphicon-arrow-down]="query.orderBy === 'reOrderLevel'"
+                [class.glyphicon-arrow-up]="query.orderBy === 'reOrderLevel desc'"></i>
+            </button>
+          </th>
+          
+          <!--tenant-->
+          <th>
+            <button class="btn btn-default" (click)="onColumnHeaderClicked('tenant')">
+              {{ formMetaData.properties.tenant['x-ncg'].label }}
+              <i class="glyphicon" [class.glyphicon-arrow-down]="query.orderBy === 'tenant'"
+                [class.glyphicon-arrow-up]="query.orderBy === 'tenant desc'"></i>
+            </button>
+          </th>
+          
+          <!--tenantId-->
+          <th>
+            <button class="btn btn-default" (click)="onColumnHeaderClicked('tenantId')">
+              {{ formMetaData.properties.tenantId['x-ncg'].label }}
+              <i class="glyphicon" [class.glyphicon-arrow-down]="query.orderBy === 'tenantId'"
+                [class.glyphicon-arrow-up]="query.orderBy === 'tenantId desc'"></i>
+            </button>
+          </th>
+          
+          <!--testString-->
+          <th>
+            <button class="btn btn-default" (click)="onColumnHeaderClicked('testString')">
+              {{ formMetaData.properties.testString['x-ncg'].label }}
+              <i class="glyphicon" [class.glyphicon-arrow-down]="query.orderBy === 'testString'"
+                [class.glyphicon-arrow-up]="query.orderBy === 'testString desc'"></i>
+            </button>
+          </th>
+          
+          <!--uid-->
+          <th>
+            <button class="btn btn-default" (click)="onColumnHeaderClicked('uid')">
+              {{ formMetaData.properties.uid['x-ncg'].label }}
+              <i class="glyphicon" [class.glyphicon-arrow-down]="query.orderBy === 'uid'"
+                [class.glyphicon-arrow-up]="query.orderBy === 'uid desc'"></i>
+            </button>
+          </th>
+          
+          <!--updatedBy-->
+          <th>
+            <button class="btn btn-default" (click)="onColumnHeaderClicked('updatedBy')">
+              {{ formMetaData.properties.updatedBy['x-ncg'].label }}
+              <i class="glyphicon" [class.glyphicon-arrow-down]="query.orderBy === 'updatedBy'"
+                [class.glyphicon-arrow-up]="query.orderBy === 'updatedBy desc'"></i>
+            </button>
+          </th>
+          
+          <!--updatedDate-->
+          <th>
+            <button class="btn btn-default" (click)="onColumnHeaderClicked('updatedDate')">
+              {{ formMetaData.properties.updatedDate['x-ncg'].label }}
+              <i class="glyphicon" [class.glyphicon-arrow-down]="query.orderBy === 'updatedDate'"
+                [class.glyphicon-arrow-up]="query.orderBy === 'updatedDate desc'"></i>
+            </button>
+          </th>
+          
+        </tr>
+      </thead>
+
+      <tbody>
+        <!--rows-->
+        <tr *ngFor="let item of listWithCount?.list">
+          <!--actions-->
+          <td>
+            <button id="editButton" (click)="edit(item)" class="btn btn-sm btn-primary" [attr.aria-label]="edit"><i class="fa fa-edit"></i></button>
+            <button id="deleteButton" (click)="delete(item[keyName])" class="btn btn-sm btn-danger" [attr.aria-label]="delete"><i class="fa fa-remove"></i></button>
+          </td>
+          
+          <!--id-->
+          <td>
+            {{ item.id }}
+          </td>
+          <!--address-->
+          <td>
+            {{ item.address }}
+          </td>
+          <!--age-->
+          <td>
+            {{ item.age }}
+          </td>
+          <!--createdBy-->
+          <td>
+            {{ item.createdBy }}
+          </td>
+          <!--createdDate-->
+          <td>
+          {{ item.createdDate | date:"MM/dd/yyyy" }}
+          </td>
+          <!--emailAddress-->
+          <td>
+            {{ item.emailAddress }}
+          </td>
+          <!--gender-->
+          <td>
+            {{ item.gender }}
+          </td>
+          <!--isActive-->
+          <td>
+            {{ item.isActive }}
+          </td>
+          <!--name-->
+          <td>
+            {{ item.name }}
+          </td>
+          <!--password-->
+          <td>
+            {{ item.password }}
+          </td>
+          <!--phone-->
+          <td>
+            {{ item.phone }}
+          </td>
+          <!--reOrderLevel-->
+          <td>
+            {{ item.reOrderLevel }}
+          </td>
+          <!--tenant-->
+          <td>
+            {{ item.tenant }}
+          </td>
+          <!--tenantId-->
+          <td>
+            {{ item.tenantId }}
+            <!--{{ item.tenantId | myDisplayDataTransform:[tenantList,"id","name"] }}-->
+          </td>
+          <!--testString-->
+          <td>
+            {{ item.testString }}
+          </td>
+          <!--uid-->
+          <td>
+            {{ item.uid }}
+          </td>
+          <!--updatedBy-->
+          <td>
+            {{ item.updatedBy }}
+          </td>
+          <!--updatedDate-->
+          <td>
+          {{ item.updatedDate | date:"MM/dd/yyyy" }}
+          </td>
+       </tr>
+      </tbody>
+
+      <!--footer-->
+      <tfoot class="thead-default">
+        <tr>
+         <th>Actions</th>
+         <th>Id</th>
+         <th>Address</th>
+         <th>Age</th>
+         <th>Created By</th>
+         <th>Created Date</th>
+         <th>Email Address</th>
+         <th>Gender</th>
+         <th>Is Active</th>
+         <th>Name</th>
+         <th>Password</th>
+         <th>Phone</th>
+         <th>Re Order Level</th>
+         <th>Tenant</th>
+         <th>Tenant Id</th>
+         <th>Test String</th>
+         <th>Uid</th>
+         <th>Updated By</th>
+         <th>Updated Date</th>
+       </tr>
+      </tfoot>
+    </table>
+    <div>
+      <label id='itemsCountLabel'>{{ listWithCount?.count }}</label> items
+    </div>
+  </div>
+</parentFilterAndPaging>
+
+<pagination class="pagination-sm" 
+  [totalItems]="paginationData.itemCount" 
+  [(ngModel)]="paginationData.currentPage" 
+  [maxSize]="paginationData.maxSize" 
+  [boundaryLinks]="paginationData.isBoundaryLinks" 
+  [rotate]="paginationData.isRotate" 
+  (pageChanged)="pageChanged($event)"
+  (numPages)="numPagesUpdated($event)"
+  [itemsPerPage]="query.top"></pagination>

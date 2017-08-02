@@ -1,0 +1,150 @@
+<!--Tenant-->
+    <div class="container">
+      <div class="row">
+        <div class="form-group col-xs-12">
+          <button id="addButton" class="btn button-primary" [routerLink]="['new'] ">Add</button>
+        </div>
+      </div>
+    </div>
+    
+    <parentFilterAndPaging #parentFilterAndPagingRef 
+                       [paginationData]="paginationData" 
+                       [query]="query"
+                       [filterType]="filterType"
+                       [fieldFilterModel]="fieldFilterModel"
+                       [filterValue]="filterValue"
+                       (onListClicked)="getList()" 
+                       (onPageChanged)="pageChanged($event)" 
+                       (onUpdatingSort)="updateSort($event.value)"
+                       (onUpdatingFilter)="updateFilter($event)"> 
+  <!--table-->
+  <div tableToInject class="table-responsive">
+    <table class="table table-striped table-hover table-baddressed">
+      <thead class="thead-default">
+        <tr>
+          <!--actions-->
+          <th style="min-width: 100px;">
+            Actions
+          </th>
+          
+          <!--id-->
+          <th>
+            <button class="btn btn-default" (click)="onColumnHeaderClicked('id')">
+              {{ formMetaData.properties.id['x-ncg'].label }}
+              <i class="glyphicon" [class.glyphicon-arrow-down]="query.orderBy === 'id'"
+                [class.glyphicon-arrow-up]="query.orderBy === 'id desc'"></i>
+            </button>
+          </th>
+          
+          <!--concurrencyStamp-->
+          <th>
+            <button class="btn btn-default" (click)="onColumnHeaderClicked('concurrencyStamp')">
+              {{ formMetaData.properties.concurrencyStamp['x-ncg'].label }}
+              <i class="glyphicon" [class.glyphicon-arrow-down]="query.orderBy === 'concurrencyStamp'"
+                [class.glyphicon-arrow-up]="query.orderBy === 'concurrencyStamp desc'"></i>
+            </button>
+          </th>
+          
+          <!--created-->
+          <th>
+            <button class="btn btn-default" (click)="onColumnHeaderClicked('created')">
+              {{ formMetaData.properties.created['x-ncg'].label }}
+              <i class="glyphicon" [class.glyphicon-arrow-down]="query.orderBy === 'created'"
+                [class.glyphicon-arrow-up]="query.orderBy === 'created desc'"></i>
+            </button>
+          </th>
+          
+          <!--issuerValue-->
+          <th>
+            <button class="btn btn-default" (click)="onColumnHeaderClicked('issuerValue')">
+              {{ formMetaData.properties.issuerValue['x-ncg'].label }}
+              <i class="glyphicon" [class.glyphicon-arrow-down]="query.orderBy === 'issuerValue'"
+                [class.glyphicon-arrow-up]="query.orderBy === 'issuerValue desc'"></i>
+            </button>
+          </th>
+          
+          <!--name-->
+          <th>
+            <button class="btn btn-default" (click)="onColumnHeaderClicked('name')">
+              {{ formMetaData.properties.name['x-ncg'].label }}
+              <i class="glyphicon" [class.glyphicon-arrow-down]="query.orderBy === 'name'"
+                [class.glyphicon-arrow-up]="query.orderBy === 'name desc'"></i>
+            </button>
+          </th>
+          
+          <!--users-->
+          <th>
+            <button class="btn btn-default" (click)="onColumnHeaderClicked('users')">
+              {{ formMetaData.properties.users['x-ncg'].label }}
+              <i class="glyphicon" [class.glyphicon-arrow-down]="query.orderBy === 'users'"
+                [class.glyphicon-arrow-up]="query.orderBy === 'users desc'"></i>
+            </button>
+          </th>
+          
+        </tr>
+      </thead>
+
+      <tbody>
+        <!--rows-->
+        <tr *ngFor="let item of listWithCount?.list">
+          <!--actions-->
+          <td>
+            <button id="editButton" (click)="edit(item)" class="btn btn-sm btn-primary" [attr.aria-label]="edit"><i class="fa fa-edit"></i></button>
+            <button id="deleteButton" (click)="delete(item[keyName])" class="btn btn-sm btn-danger" [attr.aria-label]="delete"><i class="fa fa-remove"></i></button>
+          </td>
+          
+          <!--id-->
+          <td>
+            {{ item.id }}
+          </td>
+          <!--concurrencyStamp-->
+          <td>
+            {{ item.concurrencyStamp }}
+          </td>
+          <!--created-->
+          <td>
+          {{ item.created | date:"MM/dd/yyyy" }}
+          </td>
+          <!--issuerValue-->
+          <td>
+            {{ item.issuerValue }}
+          </td>
+          <!--name-->
+          <td>
+            {{ item.name }}
+          </td>
+          <!--users-->
+          <td>
+            {{ item.users }}
+          </td>
+       </tr>
+      </tbody>
+
+      <!--footer-->
+      <tfoot class="thead-default">
+        <tr>
+         <th>Actions</th>
+         <th>Id</th>
+         <th>Concurrency Stamp</th>
+         <th>Created</th>
+         <th>Issuer Value</th>
+         <th>Name</th>
+         <th>Users</th>
+       </tr>
+      </tfoot>
+    </table>
+    <div>
+      <label id='itemsCountLabel'>{{ listWithCount?.count }}</label> items
+    </div>
+  </div>
+</parentFilterAndPaging>
+
+<pagination class="pagination-sm" 
+  [totalItems]="paginationData.itemCount" 
+  [(ngModel)]="paginationData.currentPage" 
+  [maxSize]="paginationData.maxSize" 
+  [boundaryLinks]="paginationData.isBoundaryLinks" 
+  [rotate]="paginationData.isRotate" 
+  (pageChanged)="pageChanged($event)"
+  (numPages)="numPagesUpdated($event)"
+  [itemsPerPage]="query.top"></pagination>

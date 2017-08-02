@@ -1,0 +1,69 @@
+<nav class="navbar fixed-top navbar-toggleable-sm">
+  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <i class="fa fa-bars" aria-hidden="true"></i>    
+  </button>
+  <a class="navbar-brand" href="#">NCG Angular Bootstrap Admin/CRUD App</a>
+  <button id="sideBarToggleButton" type="button" class="btn sidebar-button" (click)="isTogglingSidebar = !isTogglingSidebar">
+    <i class="fa fa-bars" aria-hidden="true"></i>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a [routerLink]="['/', 'admin']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Admin</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<div id="wrapper" [class.toggled]="isTogglingSidebar">
+  <!-- Sidebar -->
+  <div id="sidebar-wrapper">
+    <ul *ngIf="activateAdminRoute" class="sidebar-nav">
+      
+      <li class="nav-item" [class.active]="activateAdminSideItem === 'defaultTypeAndFormat'">
+        <a class="nav-link" [routerLink]="['/', 'admin', 'defaultTypeAndFormat']">Default Type And Format</a>
+      </li>
+      <li class="nav-item" [class.active]="activateAdminSideItem === 'defaultValidation'">
+        <a class="nav-link" [routerLink]="['/', 'admin', 'defaultValidation']">Default Validation</a>
+      </li>
+      <li class="nav-item" [class.active]="activateAdminSideItem === 'ncgOther'">
+        <a class="nav-link" [routerLink]="['/', 'admin', 'ncgOther']">Ncg Other</a>
+      </li>
+      <li class="nav-item" [class.active]="activateAdminSideItem === 'ncgTypeAndFormat'">
+        <a class="nav-link" [routerLink]="['/', 'admin', 'ncgTypeAndFormat']">Ncg Type And Format</a>
+      </li>
+      <li class="nav-item" [class.active]="activateAdminSideItem === 'ncgValidation'">
+        <a class="nav-link" [routerLink]="['/', 'admin', 'ncgValidation']">Ncg Validation</a>
+      </li>
+      <li class="nav-item" [class.active]="activateAdminSideItem === 'someItem'">
+        <a class="nav-link" [routerLink]="['/', 'admin', 'someItem']">Some Item</a>
+      </li>
+      <li class="nav-item" [class.active]="activateAdminSideItem === 'tenant'">
+        <a class="nav-link" [routerLink]="['/', 'admin', 'tenant']">Tenant</a>
+      </li>
+      <li class="nav-item" [class.active]="activateAdminSideItem === 'typeOfType'">
+        <a class="nav-link" [routerLink]="['/', 'admin', 'typeOfType']">Type Of Type</a>
+      </li>
+      <li class="nav-item" [class.active]="activateAdminSideItem === 'user'">
+        <a class="nav-link" [routerLink]="['/', 'admin', 'user']">User</a>
+      </li>
+      <li class="nav-item" [class.active]="activateAdminSideItem === 'validation'">
+        <a class="nav-link" [routerLink]="['/', 'admin', 'validation']">Validation</a>
+      </li>
+    </ul>
+  </div>
+  <!-- /#sidebar-wrapper -->
+  <!-- Page Content -->
+  <div id="page-content-wrapper">
+    <div class="container-fluid">
+      <router-outlet></router-outlet>
+      <footer>
+        <span>Generated with <a [href]="url" target="_blank">NinjaCodeGen</a> by DNA</span>
+      </footer>
+    </div>
+  </div>
+  <!-- /#page-content-wrapper -->
+</div>
+<ncg-busyIndicator></ncg-busyIndicator>
+<ncg-notifier></ncg-notifier>
+<ncg-modal-dialog></ncg-modal-dialog>

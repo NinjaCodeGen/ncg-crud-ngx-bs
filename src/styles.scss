@@ -1,0 +1,251 @@
+/* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+  height: 100%;
+  font-family: Arial, Helvetica, sans-serif
+}
+
+$nav-button-color: #00838F;
+nav {
+  background-color: #00695c;
+  height: 55px;
+  margin: 0;
+  a {
+    background-color: none !important;
+    color: white !important;
+    padding: 4px 8px;
+    margin: 2px;
+    vertical-align: middle;
+    line-height: 1.25;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 4px;
+    position: relative;
+    text-decoration: none;
+    &:active {
+      background: none !important;
+      outline: none !important;
+      text-decoration: none !important;
+    }
+    &:hover {
+      background: none !important;
+      outline: none !important;
+      text-decoration: none !important;
+      &::before {
+        border-bottom: 3px solid yellow;
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: -15px;
+        z-index: 1;
+      }
+    }
+    &.navbar-brand {
+      float: left;
+      font-size: 1.25rem;
+      line-height: 55px;
+      padding: 0 10px;
+      margin: 0 1rem;
+      height: 55px;
+      outline: none;
+      &:hover {
+        background-color: transparent;
+      }
+    }
+  }
+  .sidebar-button {
+    border: none !important;
+    background: none;
+    color: white;
+    line-height: 55px;
+    height: 55px;
+    padding: 0 20px;
+    outline: none !important;
+    &:hover,
+    &:active {
+      background: none;
+      outline: none !important;
+    }
+  }
+}
+
+.navbar {
+  padding: 0 1rem !important;
+}
+
+.container {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+.animated {
+  -webkit-animation-duration: 500ms;
+  animation-duration: 500ms;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+.not-displayed {
+  display: none;
+}
+
+.story-card {
+  max-width: 100%
+}
+
+@media (max-width: 320px) {
+  .story-button {
+    font-size: 12px;
+    padding: 0em;
+  }
+}
+
+@-webkit-keyframes slideInRight {
+  from {
+    -webkit-transform: translate3d(5%, 0, 0);
+    transform: translate3d(5%, 0, 0);
+    visibility: visible;
+  }
+  to {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    -webkit-transform: translate3d(5%, 0, 0);
+    transform: translate3d(5%, 0, 0);
+    visibility: visible;
+  }
+  to {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+
+/* Toggle Styles */
+
+#wrapper {
+  margin-top: 55px;
+  padding-left: 0;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+#wrapper.toggled {
+  padding-left: 250px;
+}
+
+#sidebar-wrapper {
+  z-index: 1000;
+  position: fixed;
+  left: 250px;
+  width: 0;
+  height: 100%;
+  margin-left: -250px;
+  overflow-y: auto;
+  background: #4db6ac;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+  width: 250px;
+}
+
+#page-content-wrapper {
+  width: 100%;
+  position: absolute;
+  padding: 15px;
+}
+
+#wrapper.toggled #page-content-wrapper {
+  position: absolute;
+  margin-right: -250px;
+}
+
+
+/* Sidebar Styles */
+
+.sidebar-nav {
+  position: absolute;
+  top: 0;
+  width: 250px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.sidebar-nav li {
+  text-indent: 20px;
+  line-height: 40px;
+}
+
+.sidebar-nav li a {
+  display: block;
+  text-decoration: none;
+  color: #00796b;
+}
+
+.sidebar-nav li.active a,
+.sidebar-nav li a:hover {
+  text-decoration: none;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.sidebar-nav li a:active,
+.sidebar-nav li a:focus {
+  text-decoration: none;
+}
+
+.sidebar-nav > .sidebar-brand {
+  height: 65px;
+  font-size: 18px;
+  line-height: 60px;
+}
+
+.sidebar-nav > .sidebar-brand a {
+  color: #999999;
+}
+
+.sidebar-nav > .sidebar-brand a:hover {
+  color: #fff;
+  background: none;
+}
+
+@media(min-width:768px) {
+  #wrapper {
+    padding-left: 0;
+  }
+  #wrapper.toggled {
+    padding-left: 250px;
+  }
+  #sidebar-wrapper {
+    width: 0;
+  }
+  #wrapper.toggled #sidebar-wrapper {
+    width: 250px;
+  }
+  #page-content-wrapper {
+    padding: 20px;
+    position: relative;
+  }
+  #wrapper.toggled #page-content-wrapper {
+    position: relative;
+    margin-right: 0;
+  }
+}

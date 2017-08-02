@@ -1,0 +1,44 @@
+
+  <div class="container">
+  <div class="row">
+    <div class="form-group col-3">
+      <select id="fieldSelect" class="form-control" [(ngModel)]="filterValue.filterField">
+        <option *ngFor="let opt of fieldFilterModel" [value]="opt.value">{{ opt.display }}</option>
+      </select>
+    </div>
+    <div class="form-group col-3">
+      <select id="filterType" class="form-control" [(ngModel)]="filterValue.filterType">
+        <option *ngFor="let opt of filterType" [value]="opt.value">{{ opt.display }}</option>
+      </select>
+    </div>
+    <div class="col">
+      <input-debounce id="input-debounce" [delay]="800" placeholder="Search..." (value)="updateFilter($event)"></input-debounce>
+    </div>
+  </div>
+
+  <div class="row">
+    <ng-content select="[tableToInject]"></ng-content>
+  </div>
+
+  <div class="row">
+    <div class="form-group col-3">
+      <input [(ngModel)]="query.filter" placeholder="filter string" class="form-control" />
+    </div>
+    <div class="form-group col-3">
+      <input [(ngModel)]="query.orderBy" placeholder="orderBy" class="form-control" />
+    </div>
+    <div class="form-group col-2">
+      <input id="recordsPerPageInput" [(ngModel)]="query.top" placeholder="top" type="number" class="form-control" />
+    </div>
+    <div class="form-group col-2">
+      <input [(ngModel)]="query.skip" placeholder="skip" type="number" class="form-control" />
+    </div>
+    <div class="form-group col-2">
+      <button id="getButton" type="button" class="btn btn-secondary" (click)="getList()" [attr.aria-label]="Search">Search</button>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- NinjaCodeGen.com by DNAfor.NET -->

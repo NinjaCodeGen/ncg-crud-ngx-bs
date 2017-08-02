@@ -1,0 +1,30 @@
+<div *ngIf="item && myForm" formToInject> 
+    <form (ngSubmit)="onSubmit()" *ngIf="item" [formGroup]="myForm" novalidate>
+    
+      
+    <!--id - integer-->
+      <div class="form-group" [ngClass]="{'has-danger': myForm.controls['id']?.invalid && (myForm.controls['id'].touched || isSubmitAttempted)}">
+        <label for="idInput">{{formMetaData.properties.id["x-ncg"].label}}:</label> 
+ <input id="idInput" #idInput [formControl]="myForm.controls['id']" [(ngModel)]="item.id" type="number" [placeholder]="formMetaData.properties.id['x-ncg'].placeholder" class="form-control" /> 
+        <div *ngFor="let error of formMetaData.properties.id['x-ncg'].errors" class="alert alert-danger">{{error.message}}</div>
+      </div>
+    
+      
+    <!--name - string-->
+      <div class="form-group" [ngClass]="{'has-danger': myForm.controls['name']?.invalid && (myForm.controls['name'].touched || isSubmitAttempted)}">
+        <label for="nameInput">{{formMetaData.properties.name["x-ncg"].label}}:</label> 
+ <input id="nameInput" #nameInput [formControl]="myForm.controls['name']" [(ngModel)]="item.name" type="text" [placeholder]="formMetaData.properties.name['x-ncg'].placeholder" class="form-control" /> 
+        <div *ngFor="let error of formMetaData.properties.name['x-ncg'].errors" class="alert alert-danger">{{error.message}}</div>
+      </div>
+    
+    
+
+      <div *ngIf="!myForm.valid" class="ui error message">Form is invalid</div>
+
+      <button id="backButton" type="button" class="btn btn-secondary" (click)="goBack()" [attr.aria-label]="back">Back</button>
+      <button id="cancelButton" type="button" class="btn btn-secondary" (click)="onCancel()" [attr.aria-label]="cancel">Cancel</button>
+      <button id="resetButton" type="button" [disabled]="myForm.pristine" class="btn btn-secondary" (click)="onReset()" [attr.aria-label]="reset">Reset</button>
+      <button id="deleteButton" type="button" class="btn btn-danger" (click)="onDelete()" [attr.aria-label]="delete">Delete</button>
+      <button id="submitButton" type="submit" [disabled]="myForm.invalid && isSubmitAttempted" class="btn btn-primary" [attr.aria-label]="submit">Submit</button>
+    </form>
+  </div>
