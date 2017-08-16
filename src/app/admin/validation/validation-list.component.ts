@@ -25,6 +25,7 @@ import { EntityService, ModalDialogService, BusyIndicatorService, NotifierServic
 
 export class ValidationListComponent extends BaseListComponent<Validation>  {
 
+  public tenantList: any = null;
 
   public keyName: string = 'id';
   public fieldFilterModel: any = null;
@@ -72,5 +73,18 @@ export class ValidationListComponent extends BaseListComponent<Validation>  {
   }
 
   protected populateComponentDataAsync() {
+    this.populateTenantData();
   }
+    
+  // private methods populateTenantData
+  private populateTenantData() {
+   this.datacontextService.TenantApi
+     .get()
+     .subscribe((tenantlistWithCount) => {
+        // TODO: this.tenantIsLoading = true;
+        this.tenantList = tenantlistWithCount.list;
+      },
+      (error) => { this.errorMessage = <any>error; });
+  }
+  
 }

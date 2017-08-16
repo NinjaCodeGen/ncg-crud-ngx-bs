@@ -4,7 +4,7 @@ export class LocalQueryHelper {
   filterByKeywords(list, keywords) {
     return list.filter((listItem) => {
       // dump an object's own enumerable properties to the console
-      for (let key of Object.keys(listItem)) {
+      for (const key of Object.keys(listItem)) {
         console.log(key + ': ' + listItem[key]);
         // if (listItem[key] && ("" + listItem[key]).toLowerCase().indexOf(keywords.toLowerCase()) > -1)
         //   return true;
@@ -106,7 +106,30 @@ export class LocalQueryHelper {
             return (item[selectedProperties] && item[selectedProperties].toString() !== mainKeyWord);
           });
 
-        default: return list;
+        default: {
+          if (mainKeyWord !== '') {
+            const selectedItemIndex = [];
+
+            list.forEach((item, itemIndex) => {
+              for (const key in item) {
+                if (item.hasOwnProperty(key) && ((item[key].toString().indexOf(mainKeyWord.toLowerCase()) > -1) ||
+                  item[key].toString().toLowerCase() === mainKeyWord.toLowerCase())) {
+                  selectedItemIndex.push(itemIndex);
+                }
+              }
+            });
+
+            if (selectedItemIndex.length > 0) {
+              return list.filter((item, index) => {
+                return selectedItemIndex.indexOf(index) > -1;
+              });
+            } else {
+              return list;
+            }
+          } else {
+            return list;
+          }
+        }
       }
     }
   }
