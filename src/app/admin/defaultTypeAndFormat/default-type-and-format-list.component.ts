@@ -15,7 +15,7 @@ import { DisplayDataTransformPipe } from './../common/pipes';
 
 // services
 import { LocalStorageService, RestoreService } from './../common/services';
-import { DataContext } from './../services/api/rest';
+import { DataContext } from './../services/api/rest/data-context.service';
 import { EntityService, ModalDialogService, BusyIndicatorService, NotifierService } from '../../core';
 
 @Component({
@@ -25,8 +25,7 @@ import { EntityService, ModalDialogService, BusyIndicatorService, NotifierServic
 
 export class DefaultTypeAndFormatListComponent extends BaseListComponent<DefaultTypeAndFormat>  {
 
-
-  public keyName: string = 'id';
+  public keyName: 'id';
   public fieldFilterModel: any = null;
   public formMetaData: any = null;
   
@@ -39,19 +38,29 @@ export class DefaultTypeAndFormatListComponent extends BaseListComponent<Default
     router: Router,
     activatedRoute: ActivatedRoute,
   ) {
-    super(titleService, entityService, modalDialogService, busyIndicatorService, notifierService, datacontextService.DefaultTypeAndFormatApi, router, activatedRoute);
-    
+    super(
+      titleService,
+      entityService,
+      modalDialogService,
+      busyIndicatorService,
+      notifierService,
+      datacontextService.DefaultTypeAndFormatApi,
+      router,
+      activatedRoute
+    );
+
     this.formMetaData = require('./default-type-and-format.metaData.json'); 
     this.componentName = 'DefaultTypeAndFormatListComponent';
+
     this.generateFilterModel();
   }
 
   public generateFilterModel() {
-    let filterModel = [];
+    const filterModel = [];
     if (this.formMetaData && this.formMetaData.properties) {
-      for (let key in this.formMetaData.properties) {
+      for (const key in this.formMetaData.properties) {
         if (this.formMetaData.properties.hasOwnProperty(key)) {
-          let element = this.formMetaData.properties[key];
+          const element = this.formMetaData.properties[key];
 
           if (element.type && element['x-ncg']) {
             filterModel.push({
@@ -66,10 +75,9 @@ export class DefaultTypeAndFormatListComponent extends BaseListComponent<Default
     this.fieldFilterModel = filterModel;
   }
 
-  public numPagesUpdated(event) {}
-
-  protected customValidate() {
-  }
+  public numPagesUpdated(event) { }
+  
+  protected customValidate() { }
 
   protected populateComponentDataAsync() {
   }

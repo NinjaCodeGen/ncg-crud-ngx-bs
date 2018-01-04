@@ -1,4 +1,3 @@
-
 import { browser, by, element } from 'protractor';
 import { AdminView } from '../admin.po';
 import { DefaultValidationListPageObject } from './default-validation-list.po';

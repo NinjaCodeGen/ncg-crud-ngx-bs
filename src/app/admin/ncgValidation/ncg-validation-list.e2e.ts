@@ -1,4 +1,3 @@
-
 import { browser, by, element } from 'protractor';
 import { AdminView } from '../admin.po';
 import { NcgValidationListPageObject } from './ncg-validation-list.po';

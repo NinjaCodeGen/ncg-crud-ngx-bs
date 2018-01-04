@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'user',
-  providers: [],
   templateUrl: './user.component.html'
 })
 

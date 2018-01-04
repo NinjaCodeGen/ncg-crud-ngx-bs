@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'ncgValidation',
-  providers: [],
   templateUrl: './ncg-validation.component.html'
 })
 

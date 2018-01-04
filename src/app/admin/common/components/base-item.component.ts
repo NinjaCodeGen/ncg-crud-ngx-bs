@@ -1,7 +1,7 @@
 // angular
 import { Location } from '@angular/common';
 import { OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms'
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -29,7 +29,7 @@ export abstract class BaseItemComponent<T> implements OnInit {
   public item: T = null;
   public momentFunction: any;
   public myForm: FormGroup;
-  public isSubmitAttempted: boolean = false;
+  public isSubmitAttempted = false;
 
   constructor(protected titleService: Title,
     protected baseApi: BaseApi<T>,
@@ -106,11 +106,11 @@ export abstract class BaseItemComponent<T> implements OnInit {
   }
 
   public onReset() {
-    this.item = this.restoreService.restoreItem();
+    this.myForm.patchValue(this.restoreService.restoreItem());
   }
 
   public onDelete() {
-    let msg = `Do you want to delete this item?`;
+    const msg = `Do you want to delete this item?`;
     this.modalDialogService.activate(msg).then((responseOK) => {
       if (responseOK) {
         this.isLoading = true;
@@ -168,7 +168,7 @@ export abstract class BaseItemComponent<T> implements OnInit {
 
   public onSubmit() {
     this.isSubmitAttempted = true;
-    for (let i in this.myForm.controls) {
+    for (const i in this.myForm.controls) {
       if (this.myForm.controls.hasOwnProperty(i)) {
         this.myForm.controls[i].markAsDirty();
         this.myForm.controls[i].updateValueAndValidity();
@@ -183,7 +183,7 @@ export abstract class BaseItemComponent<T> implements OnInit {
       // show busy indicator
       this.busyIndicatorService.show();
       this.isSaving = true;
-      this.baseApi.save(this.item, this.isItemEdited)
+      this.baseApi.save(this.myForm.value, this.isItemEdited)
         .subscribe((item) => {
           this.isSaving = false;
           this.busyIndicatorService.hide();
@@ -192,7 +192,7 @@ export abstract class BaseItemComponent<T> implements OnInit {
           this.isSaving = false;
           this.busyIndicatorService.hide();
           this.errorMessage = <any>error;
-          this.handleServiceError("Save", this.errorMessage);
+          this.handleServiceError('Save', this.errorMessage);
         });
     }
   }

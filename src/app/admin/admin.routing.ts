@@ -108,15 +108,15 @@ const AdminRoutes: Routes = [
 })
 export class AdminRoutingModule { }
 
-export const routedComponents = [AdminComponent
-  , DefaultTypeAndFormatComponent, DefaultTypeAndFormatItemComponent, DefaultTypeAndFormatListComponent
-  , DefaultValidationComponent, DefaultValidationItemComponent, DefaultValidationListComponent
-  , NcgOtherComponent, NcgOtherItemComponent, NcgOtherListComponent
-  , NcgTypeAndFormatComponent, NcgTypeAndFormatItemComponent, NcgTypeAndFormatListComponent
-  , NcgValidationComponent, NcgValidationItemComponent, NcgValidationListComponent
-  , SomeItemComponent, SomeItemItemComponent, SomeItemListComponent
-  , TenantComponent, TenantItemComponent, TenantListComponent
-  , TypeOfTypeComponent, TypeOfTypeItemComponent, TypeOfTypeListComponent
-  , UserComponent, UserItemComponent, UserListComponent
-  , ValidationComponent, ValidationItemComponent, ValidationListComponent
+export const routedComponents = [AdminComponent,
+  DefaultTypeAndFormatComponent, DefaultTypeAndFormatItemComponent, DefaultTypeAndFormatListComponent,
+  DefaultValidationComponent, DefaultValidationItemComponent, DefaultValidationListComponent,
+  NcgOtherComponent, NcgOtherItemComponent, NcgOtherListComponent,
+  NcgTypeAndFormatComponent, NcgTypeAndFormatItemComponent, NcgTypeAndFormatListComponent,
+  NcgValidationComponent, NcgValidationItemComponent, NcgValidationListComponent,
+  SomeItemComponent, SomeItemItemComponent, SomeItemListComponent,
+  TenantComponent, TenantItemComponent, TenantListComponent,
+  TypeOfTypeComponent, TypeOfTypeItemComponent, TypeOfTypeListComponent,
+  UserComponent, UserItemComponent, UserListComponent,
+  ValidationComponent, ValidationItemComponent, ValidationListComponent
 ];

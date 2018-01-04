@@ -10,7 +10,7 @@ import { SomeItem } from './../services/api/models';
 
 // providers/services
 import { LocalStorageService, RestoreService, ValidationService } from './../common/services';
-import { DataContext } from './../services/api/rest';
+import { DataContext } from './../services/api/rest/data-context.service';
 import { EntityService, ModalDialogService, BusyIndicatorService, NotifierService } from '../../core';
 
 // components
@@ -25,16 +25,14 @@ import * as moment from 'moment';
 })
 
 export class SomeItemItemComponent extends BaseItemComponent<SomeItem> {
-
-
   @Input() myForm: FormGroup;
 
   constructor(
-    protected datacontextService: DataContext,    
+    protected datacontextService: DataContext,
     protected titleService: Title,
     protected entityService: EntityService, 
-    protected modalDialogService: ModalDialogService, 
-    protected busyIndicatorService: BusyIndicatorService, 
+    protected modalDialogService: ModalDialogService,
+    protected busyIndicatorService: BusyIndicatorService,
     protected notifierService: NotifierService,
     protected formBuilder: FormBuilder,
     protected location: Location,
@@ -45,9 +43,9 @@ export class SomeItemItemComponent extends BaseItemComponent<SomeItem> {
   ) {
     super(titleService,
       datacontextService.SomeItemApi,
-      entityService, 
-      modalDialogService, 
-      busyIndicatorService, 
+      entityService,
+      modalDialogService,
+      busyIndicatorService,
       notifierService,
       formBuilder,
       location,
@@ -58,7 +56,7 @@ export class SomeItemItemComponent extends BaseItemComponent<SomeItem> {
     );
   }
 
-  protected buildForm(): void {
+  buildForm(): void {
     this.formMetaData = require('./some-item.metaData.json');
     this.normalizeFormMetaData();
     this.addFormValidation();
@@ -73,53 +71,29 @@ export class SomeItemItemComponent extends BaseItemComponent<SomeItem> {
 
   private addFormValidation() {
     this.myForm = this.formBuilder.group({
-      
       id: this.formMetaData.properties.id ? [
-          this.formMetaData.properties.id['x-ncg'].defaultValue ? this.formMetaData.properties.id['x-ncg'].defaultValue : null,
-          Validators.compose(
+        this.formMetaData.properties.id['x-ncg'].defaultValue ?
+          this.formMetaData.properties.id['x-ncg'].defaultValue :
+          null,
+        Validators.compose(
           this.validationService.generateValidators(this.formMetaData.properties.id['x-ncg'].validations)
         )
       ] : null,
-      
       name: this.formMetaData.properties.name ? [
-          this.formMetaData.properties.name['x-ncg'].defaultValue ? this.formMetaData.properties.name['x-ncg'].defaultValue : null,
-          Validators.compose(
+        this.formMetaData.properties.name['x-ncg'].defaultValue ?
+          this.formMetaData.properties.name['x-ncg'].defaultValue :
+          null,
+        Validators.compose(
           this.validationService.generateValidators(this.formMetaData.properties.name['x-ncg'].validations)
         )
-      ] : null,
-      
-      valEmailAddressPattern: this.formMetaData.properties.valEmailAddressPattern ? [
-          this.formMetaData.properties.valEmailAddressPattern['x-ncg'].defaultValue ? this.formMetaData.properties.valEmailAddressPattern['x-ncg'].defaultValue : null,
-          Validators.compose(
-          this.validationService.generateValidators(this.formMetaData.properties.valEmailAddressPattern['x-ncg'].validations)
-        )
-      ] : null,
-      
-      valMin0Max100Value: this.formMetaData.properties.valMin0Max100Value ? [
-          this.formMetaData.properties.valMin0Max100Value['x-ncg'].defaultValue ? this.formMetaData.properties.valMin0Max100Value['x-ncg'].defaultValue : null,
-          Validators.compose(
-          this.validationService.generateValidators(this.formMetaData.properties.valMin0Max100Value['x-ncg'].validations)
-        )
-      ] : null,
-      
-      valMin2Max8Length: this.formMetaData.properties.valMin2Max8Length ? [
-          this.formMetaData.properties.valMin2Max8Length['x-ncg'].defaultValue ? this.formMetaData.properties.valMin2Max8Length['x-ncg'].defaultValue : null,
-          Validators.compose(
-          this.validationService.generateValidators(this.formMetaData.properties.valMin2Max8Length['x-ncg'].validations)
-        )
-      ] : null,
-      
-      valRequiredField: this.formMetaData.properties.valRequiredField ? [
-          this.formMetaData.properties.valRequiredField['x-ncg'].defaultValue ? this.formMetaData.properties.valRequiredField['x-ncg'].defaultValue : null,
-          Validators.compose(
-          this.validationService.generateValidators(this.formMetaData.properties.valRequiredField['x-ncg'].validations)
-        )
-      ] : null,
+      ] : null
     });
 
+    this.myForm.patchValue(this.item);
   }
 
-  protected customValidate() {}
+  protected customValidate() {
+  }
 
   protected populateComponentDataAsync() {
   }

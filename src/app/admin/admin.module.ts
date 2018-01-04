@@ -15,4 +15,3 @@ import { AdminRoutingModule, routedComponents } from './admin.routing';
 })
 
 export class AdminModule { }
-

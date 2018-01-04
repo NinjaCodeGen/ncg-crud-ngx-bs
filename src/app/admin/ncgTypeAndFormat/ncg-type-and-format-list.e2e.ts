@@ -1,4 +1,3 @@
-
 import { browser, by, element } from 'protractor';
 import { AdminView } from '../admin.po';
 import { NcgTypeAndFormatListPageObject } from './ncg-type-and-format-list.po';

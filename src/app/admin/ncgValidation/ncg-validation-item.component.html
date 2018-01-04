@@ -1,52 +1,41 @@
-<div *ngIf="item && myForm" formToInject> 
-    <form (ngSubmit)="onSubmit()" *ngIf="item" [formGroup]="myForm" novalidate>
-    
-      
+<div *ngIf="item && myForm" formToInject>
+  <form (ngSubmit)="onSubmit()" [formGroup]="myForm" novalidate>
     <!--id - integer-->
-      <div class="form-group" [ngClass]="{'has-danger': myForm.controls['id']?.invalid && (myForm.controls['id'].touched || isSubmitAttempted)}">
-        <label for="idInput">{{formMetaData.properties.id["x-ncg"].label}}:</label> 
- <input id="idInput" #idInput [formControl]="myForm.controls['id']" [(ngModel)]="item.id" type="number" [placeholder]="formMetaData.properties.id['x-ncg'].placeholder" class="form-control" /> 
-        <div *ngFor="let error of formMetaData.properties.id['x-ncg'].errors" class="alert alert-danger">{{error.message}}</div>
-      </div>
-    
-      
-    <!--valEmailAddressPattern - string-->
-      <div class="form-group" [ngClass]="{'has-danger': myForm.controls['valEmailAddressPattern']?.invalid && (myForm.controls['valEmailAddressPattern'].touched || isSubmitAttempted)}">
-        <label for="valEmailAddressPatternInput">{{formMetaData.properties.valEmailAddressPattern["x-ncg"].label}}:</label> 
- <input id="valEmailAddressPatternInput" #valEmailAddressPatternInput [formControl]="myForm.controls['valEmailAddressPattern']" [(ngModel)]="item.valEmailAddressPattern" type="text" [placeholder]="formMetaData.properties.valEmailAddressPattern['x-ncg'].placeholder" class="form-control" /> 
-        <div *ngFor="let error of formMetaData.properties.valEmailAddressPattern['x-ncg'].errors" class="alert alert-danger">{{error.message}}</div>
-      </div>
-    
-      
-    <!--valMin0Max100Value - integer-->
-      <div class="form-group" [ngClass]="{'has-danger': myForm.controls['valMin0Max100Value']?.invalid && (myForm.controls['valMin0Max100Value'].touched || isSubmitAttempted)}">
-        <label for="valMin0Max100ValueInput">{{formMetaData.properties.valMin0Max100Value["x-ncg"].label}}:</label> 
- <input id="valMin0Max100ValueInput" #valMin0Max100ValueInput [formControl]="myForm.controls['valMin0Max100Value']" [(ngModel)]="item.valMin0Max100Value" type="number" [placeholder]="formMetaData.properties.valMin0Max100Value['x-ncg'].placeholder" class="form-control" /> 
-        <div *ngFor="let error of formMetaData.properties.valMin0Max100Value['x-ncg'].errors" class="alert alert-danger">{{error.message}}</div>
-      </div>
-    
-      
-    <!--valMin2Max8Length - string-->
-      <div class="form-group" [ngClass]="{'has-danger': myForm.controls['valMin2Max8Length']?.invalid && (myForm.controls['valMin2Max8Length'].touched || isSubmitAttempted)}">
-        <label for="valMin2Max8LengthInput">{{formMetaData.properties.valMin2Max8Length["x-ncg"].label}}:</label> 
- <input id="valMin2Max8LengthInput" #valMin2Max8LengthInput [formControl]="myForm.controls['valMin2Max8Length']" [(ngModel)]="item.valMin2Max8Length" type="text" [placeholder]="formMetaData.properties.valMin2Max8Length['x-ncg'].placeholder" class="form-control" /> 
-        <div *ngFor="let error of formMetaData.properties.valMin2Max8Length['x-ncg'].errors" class="alert alert-danger">{{error.message}}</div>
-      </div>
-    
-      
-    <!--valRequiredField - string-->
-      <div class="form-group" [ngClass]="{'has-danger': myForm.controls['valRequiredField']?.invalid && (myForm.controls['valRequiredField'].touched || isSubmitAttempted)}">
-        <label for="valRequiredFieldInput">{{formMetaData.properties.valRequiredField["x-ncg"].label}}:</label> 
- <input id="valRequiredFieldInput" #valRequiredFieldInput [formControl]="myForm.controls['valRequiredField']" [(ngModel)]="item.valRequiredField" type="text" [placeholder]="formMetaData.properties.valRequiredField['x-ncg'].placeholder" class="form-control" /> 
-        <div *ngFor="let error of formMetaData.properties.valRequiredField['x-ncg'].errors" class="alert alert-danger">{{error.message}}</div>
-      </div>
-    
-    
+    <div class="form-group" [ngClass]="{'has-danger': myForm.controls['id']?.invalid && (myForm.controls['id'].touched || isSubmitAttempted)}">
+      <input id="idInput" #idInput [placeholder]="formMetaData.properties.id['x-ncg'].label" formControlName="id" type="number" class="form-control" />
+      <div *ngFor="let error of formMetaData.properties.id['x-ncg'].errors" class="alert alert-danger">{{ error.message }}</div>
+    </div>
 
-      <button id="backButton" type="button" class="btn btn-secondary" (click)="goBack()" [attr.aria-label]="back">Back</button>
-      <button id="cancelButton" type="button" class="btn btn-secondary" (click)="onCancel()" [attr.aria-label]="cancel">Cancel</button>
-      <button id="resetButton" type="button" [disabled]="myForm.pristine" class="btn btn-secondary" (click)="onReset()" [attr.aria-label]="reset">Reset</button>
-      <button id="deleteButton" type="button" class="btn btn-danger" (click)="onDelete()" [attr.aria-label]="delete">Delete</button>
-      <button id="submitButton" type="submit" [disabled]="myForm.invalid && isSubmitAttempted" class="btn btn-primary" [attr.aria-label]="submit">Submit</button>
-    </form>
-  </div>
+    <!--valEmailAddressPattern - string-->
+    <div class="form-group" [ngClass]="{'has-danger': myForm.controls['valEmailAddressPattern']?.invalid && (myForm.controls['valEmailAddressPattern'].touched || isSubmitAttempted)}">
+      <input id="valEmailAddressPatternInput" #valEmailAddressPatternInput formControlName="valEmailAddressPattern" type="text" [placeholder]="formMetaData.properties.valEmailAddressPattern['x-ncg'].label" class="form-control"/>
+      <div *ngFor="let error of formMetaData.properties.valEmailAddressPattern['x-ncg'].errors" class="alert alert-danger">{{ error.message }}</div>
+    </div>
+
+    <!--valMin0Max100Value - integer-->
+    <div class="form-group" [ngClass]="{'has-danger': myForm.controls['valMin0Max100Value']?.invalid && (myForm.controls['valMin0Max100Value'].touched || isSubmitAttempted)}">
+      <input id="valMin0Max100ValueInput" #valMin0Max100ValueInput [placeholder]="formMetaData.properties.valMin0Max100Value['x-ncg'].label" formControlName="valMin0Max100Value" type="number" class="form-control" />
+      <div *ngFor="let error of formMetaData.properties.valMin0Max100Value['x-ncg'].errors" class="alert alert-danger">{{ error.message }}</div>
+    </div>
+
+    <!--valMin2Max8Length - string-->
+    <div class="form-group" [ngClass]="{'has-danger': myForm.controls['valMin2Max8Length']?.invalid && (myForm.controls['valMin2Max8Length'].touched || isSubmitAttempted)}">
+      <input id="valMin2Max8LengthInput" #valMin2Max8LengthInput formControlName="valMin2Max8Length" type="text" [placeholder]="formMetaData.properties.valMin2Max8Length['x-ncg'].label" class="form-control"/>
+      <div *ngFor="let error of formMetaData.properties.valMin2Max8Length['x-ncg'].errors" class="alert alert-danger">{{ error.message }}</div>
+    </div>
+
+    <!--valRequiredField - string-->
+    <div class="form-group" [ngClass]="{'has-danger': myForm.controls['valRequiredField']?.invalid && (myForm.controls['valRequiredField'].touched || isSubmitAttempted)}">
+      <input id="valRequiredFieldInput" #valRequiredFieldInput formControlName="valRequiredField" type="text" [placeholder]="formMetaData.properties.valRequiredField['x-ncg'].label" class="form-control"/>
+      <div *ngFor="let error of formMetaData.properties.valRequiredField['x-ncg'].errors" class="alert alert-danger">{{ error.message }}</div>
+    </div>
+
+
+
+    <button id="backButton" type="button" class="btn btn-secondary" (click)="goBack()" [attr.aria-label]="back">Back</button>
+    <button id="cancelButton" type="button" class="btn btn-secondary" (click)="onCancel()" [attr.aria-label]="cancel">Cancel</button>
+    <button id="resetButton" type="button" [disabled]="myForm.pristine" class="btn btn-secondary" (click)="onReset()" [attr.aria-label]="reset">Reset</button>
+    <button id="deleteButton" type="button" class="btn btn-danger" (click)="onDelete()" [attr.aria-label]="delete">Delete</button>
+    <button id="submitButton" type="submit" [disabled]="myForm.invalid && isSubmitAttempted" class="btn btn-primary" [attr.aria-label]="submit">Submit</button>
+  </form>
+</div>

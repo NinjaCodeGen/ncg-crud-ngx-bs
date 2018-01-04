@@ -15,7 +15,7 @@ import { DisplayDataTransformPipe } from './../common/pipes';
 
 // services
 import { LocalStorageService, RestoreService } from './../common/services';
-import { DataContext } from './../services/api/rest';
+import { DataContext } from './../services/api/rest/data-context.service';
 import { EntityService, ModalDialogService, BusyIndicatorService, NotifierService } from '../../core';
 
 @Component({
@@ -25,8 +25,7 @@ import { EntityService, ModalDialogService, BusyIndicatorService, NotifierServic
 
 export class TenantListComponent extends BaseListComponent<Tenant>  {
 
-
-  public keyName: string = 'id';
+  public keyName: 'id';
   public fieldFilterModel: any = null;
   public formMetaData: any = null;
   
@@ -39,19 +38,29 @@ export class TenantListComponent extends BaseListComponent<Tenant>  {
     router: Router,
     activatedRoute: ActivatedRoute,
   ) {
-    super(titleService, entityService, modalDialogService, busyIndicatorService, notifierService, datacontextService.TenantApi, router, activatedRoute);
-    
+    super(
+      titleService,
+      entityService,
+      modalDialogService,
+      busyIndicatorService,
+      notifierService,
+      datacontextService.TenantApi,
+      router,
+      activatedRoute
+    );
+
     this.formMetaData = require('./tenant.metaData.json'); 
     this.componentName = 'TenantListComponent';
+
     this.generateFilterModel();
   }
 
   public generateFilterModel() {
-    let filterModel = [];
+    const filterModel = [];
     if (this.formMetaData && this.formMetaData.properties) {
-      for (let key in this.formMetaData.properties) {
+      for (const key in this.formMetaData.properties) {
         if (this.formMetaData.properties.hasOwnProperty(key)) {
-          let element = this.formMetaData.properties[key];
+          const element = this.formMetaData.properties[key];
 
           if (element.type && element['x-ncg']) {
             filterModel.push({
@@ -66,10 +75,9 @@ export class TenantListComponent extends BaseListComponent<Tenant>  {
     this.fieldFilterModel = filterModel;
   }
 
-  public numPagesUpdated(event) {}
-
-  protected customValidate() {
-  }
+  public numPagesUpdated(event) { }
+  
+  protected customValidate() { }
 
   protected populateComponentDataAsync() {
   }

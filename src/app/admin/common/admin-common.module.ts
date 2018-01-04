@@ -6,8 +6,8 @@ import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LocalQueryHelper, LocalStorageService, RestoreService, ValidationService } from './services';
 
 // 3rd party
-import { AccordionModule, ProgressbarModule } from 'ng2-bootstrap';
-import { PaginationComponent, PaginationConfig } from 'ng2-bootstrap';
+import { AccordionModule, ProgressbarModule } from 'ngx-bootstrap';
+import { PaginationComponent, PaginationConfig } from 'ngx-bootstrap';
 
 // pipes
 import { DisplayDataTransformPipe, OrderBy } from './pipes';
