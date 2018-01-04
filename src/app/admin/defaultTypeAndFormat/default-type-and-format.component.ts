@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'defaultTypeAndFormat',
-  providers: [],
   templateUrl: './default-type-and-format.component.html'
 })
 

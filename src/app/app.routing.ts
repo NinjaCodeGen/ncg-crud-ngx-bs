@@ -1,4 +1,3 @@
-
 import { Routes } from '@angular/router';
 import { AdminLayoutComponent } from './adminLayout/admin-layout.component';
 
@@ -7,6 +6,6 @@ export const AppRoutes: Routes = [{
   component: AdminLayoutComponent,
   children: [{
     path: 'admin',
-    loadChildren: './admin/admin.module#AdminModule'
+    loadChildren: 'app/admin/admin.module#AdminModule'
   }]
 }];

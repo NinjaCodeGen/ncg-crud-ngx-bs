@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'typeOfType',
-  providers: [],
   templateUrl: './type-of-type.component.html'
 })
 

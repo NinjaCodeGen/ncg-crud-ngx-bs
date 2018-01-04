@@ -15,7 +15,7 @@ import { DisplayDataTransformPipe } from './../common/pipes';
 
 // services
 import { LocalStorageService, RestoreService } from './../common/services';
-import { DataContext } from './../services/api/rest';
+import { DataContext } from './../services/api/rest/data-context.service';
 import { EntityService, ModalDialogService, BusyIndicatorService, NotifierService } from '../../core';
 
 @Component({
@@ -25,8 +25,7 @@ import { EntityService, ModalDialogService, BusyIndicatorService, NotifierServic
 
 export class DefaultValidationListComponent extends BaseListComponent<DefaultValidation>  {
 
-
-  public keyName: string = 'id';
+  public keyName: 'id';
   public fieldFilterModel: any = null;
   public formMetaData: any = null;
   
@@ -39,19 +38,29 @@ export class DefaultValidationListComponent extends BaseListComponent<DefaultVal
     router: Router,
     activatedRoute: ActivatedRoute,
   ) {
-    super(titleService, entityService, modalDialogService, busyIndicatorService, notifierService, datacontextService.DefaultValidationApi, router, activatedRoute);
-    
+    super(
+      titleService,
+      entityService,
+      modalDialogService,
+      busyIndicatorService,
+      notifierService,
+      datacontextService.DefaultValidationApi,
+      router,
+      activatedRoute
+    );
+
     this.formMetaData = require('./default-validation.metaData.json'); 
     this.componentName = 'DefaultValidationListComponent';
+
     this.generateFilterModel();
   }
 
   public generateFilterModel() {
-    let filterModel = [];
+    const filterModel = [];
     if (this.formMetaData && this.formMetaData.properties) {
-      for (let key in this.formMetaData.properties) {
+      for (const key in this.formMetaData.properties) {
         if (this.formMetaData.properties.hasOwnProperty(key)) {
-          let element = this.formMetaData.properties[key];
+          const element = this.formMetaData.properties[key];
 
           if (element.type && element['x-ncg']) {
             filterModel.push({
@@ -66,10 +75,9 @@ export class DefaultValidationListComponent extends BaseListComponent<DefaultVal
     this.fieldFilterModel = filterModel;
   }
 
-  public numPagesUpdated(event) {}
-
-  protected customValidate() {
-  }
+  public numPagesUpdated(event) { }
+  
+  protected customValidate() { }
 
   protected populateComponentDataAsync() {
   }

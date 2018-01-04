@@ -1,4 +1,3 @@
-
 import { browser, by, element } from 'protractor';
 import { AdminView } from '../admin.po';
 import { DefaultTypeAndFormatListPageObject } from './default-type-and-format-list.po';
@@ -129,6 +128,5 @@ describe('Default Type And Format Item', () => {
         }
       }
     });
-  
   });
 });

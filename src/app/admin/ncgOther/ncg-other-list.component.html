@@ -1,22 +1,15 @@
 <!--NcgOther-->
-    <div class="container">
-      <div class="row">
-        <div class="form-group col-xs-12">
-          <button id="addButton" class="btn button-primary" [routerLink]="['new'] ">Add</button>
-        </div>
-      </div>
+<div class="container">
+  <div class="row">
+    <div class="form-group col-xs-12">
+      <button id="addButton" class="btn button-primary" [routerLink]="['new'] ">Add</button>
     </div>
-    
-    <parentFilterAndPaging #parentFilterAndPagingRef 
-                       [paginationData]="paginationData" 
-                       [query]="query"
-                       [filterType]="filterType"
-                       [fieldFilterModel]="fieldFilterModel"
-                       [filterValue]="filterValue"
-                       (onListClicked)="getList()" 
-                       (onPageChanged)="pageChanged($event)" 
-                       (onUpdatingSort)="updateSort($event.value)"
-                       (onUpdatingFilter)="updateFilter($event)"> 
+  </div>
+</div>
+
+<parentFilterAndPaging #parentFilterAndPagingRef [paginationData]="paginationData" [query]="query" [filterType]="filterType"
+  [fieldFilterModel]="fieldFilterModel" [filterValue]="filterValue" (onListClicked)="getList()" (onPageChanged)="pageChanged($event)"
+  (onUpdatingSort)="updateSort($event.value)" (onUpdatingFilter)="updateFilter($event)">
   <!--table-->
   <div tableToInject class="table-responsive">
     <table class="table table-striped table-hover table-baddressed">
@@ -26,88 +19,79 @@
           <th style="min-width: 100px;">
             Actions
           </th>
-          
+
           <!--id-->
           <th>
             <button class="btn btn-default" (click)="onColumnHeaderClicked('id')">
               {{ formMetaData.properties.id['x-ncg'].label }}
-              <i class="glyphicon" [class.glyphicon-arrow-down]="query.orderBy === 'id'"
-                [class.glyphicon-arrow-up]="query.orderBy === 'id desc'"></i>
+              <i class="glyphicon" [class.glyphicon-arrow-down]="query.orderBy === 'id'" [class.glyphicon-arrow-up]="query.orderBy === 'id desc'"></i>
             </button>
           </th>
-          
+
           <!--itemNotDisplayed-->
           <th>
             <button class="btn btn-default" (click)="onColumnHeaderClicked('itemNotDisplayed')">
               {{ formMetaData.properties.itemNotDisplayed['x-ncg'].label }}
-              <i class="glyphicon" [class.glyphicon-arrow-down]="query.orderBy === 'itemNotDisplayed'"
-                [class.glyphicon-arrow-up]="query.orderBy === 'itemNotDisplayed desc'"></i>
+              <i class="glyphicon" [class.glyphicon-arrow-down]="query.orderBy === 'itemNotDisplayed'" [class.glyphicon-arrow-up]="query.orderBy === 'itemNotDisplayed desc'"></i>
             </button>
           </th>
-          
+
           <!--itemNotGenerated-->
           <th>
             <button class="btn btn-default" (click)="onColumnHeaderClicked('itemNotGenerated')">
               {{ formMetaData.properties.itemNotGenerated['x-ncg'].label }}
-              <i class="glyphicon" [class.glyphicon-arrow-down]="query.orderBy === 'itemNotGenerated'"
-                [class.glyphicon-arrow-up]="query.orderBy === 'itemNotGenerated desc'"></i>
+              <i class="glyphicon" [class.glyphicon-arrow-down]="query.orderBy === 'itemNotGenerated'" [class.glyphicon-arrow-up]="query.orderBy === 'itemNotGenerated desc'"></i>
             </button>
           </th>
-          
+
           <!--listNotDisplayed-->
           <th>
             <button class="btn btn-default" (click)="onColumnHeaderClicked('listNotDisplayed')">
               {{ formMetaData.properties.listNotDisplayed['x-ncg'].label }}
-              <i class="glyphicon" [class.glyphicon-arrow-down]="query.orderBy === 'listNotDisplayed'"
-                [class.glyphicon-arrow-up]="query.orderBy === 'listNotDisplayed desc'"></i>
+              <i class="glyphicon" [class.glyphicon-arrow-down]="query.orderBy === 'listNotDisplayed'" [class.glyphicon-arrow-up]="query.orderBy === 'listNotDisplayed desc'"></i>
             </button>
           </th>
-          
+
           <!--listNotGenerated-->
           <th>
             <button class="btn btn-default" (click)="onColumnHeaderClicked('listNotGenerated')">
               {{ formMetaData.properties.listNotGenerated['x-ncg'].label }}
-              <i class="glyphicon" [class.glyphicon-arrow-down]="query.orderBy === 'listNotGenerated'"
-                [class.glyphicon-arrow-up]="query.orderBy === 'listNotGenerated desc'"></i>
+              <i class="glyphicon" [class.glyphicon-arrow-down]="query.orderBy === 'listNotGenerated'" [class.glyphicon-arrow-up]="query.orderBy === 'listNotGenerated desc'"></i>
             </button>
           </th>
-          
+
           <!--orderAThird-->
           <th>
             <button class="btn btn-default" (click)="onColumnHeaderClicked('orderAThird')">
               {{ formMetaData.properties.orderAThird['x-ncg'].label }}
-              <i class="glyphicon" [class.glyphicon-arrow-down]="query.orderBy === 'orderAThird'"
-                [class.glyphicon-arrow-up]="query.orderBy === 'orderAThird desc'"></i>
+              <i class="glyphicon" [class.glyphicon-arrow-down]="query.orderBy === 'orderAThird'" [class.glyphicon-arrow-up]="query.orderBy === 'orderAThird desc'"></i>
             </button>
           </th>
-          
+
           <!--orderBSecond-->
           <th>
             <button class="btn btn-default" (click)="onColumnHeaderClicked('orderBSecond')">
               {{ formMetaData.properties.orderBSecond['x-ncg'].label }}
-              <i class="glyphicon" [class.glyphicon-arrow-down]="query.orderBy === 'orderBSecond'"
-                [class.glyphicon-arrow-up]="query.orderBy === 'orderBSecond desc'"></i>
+              <i class="glyphicon" [class.glyphicon-arrow-down]="query.orderBy === 'orderBSecond'" [class.glyphicon-arrow-up]="query.orderBy === 'orderBSecond desc'"></i>
             </button>
           </th>
-          
+
           <!--orderCFirst-->
           <th>
             <button class="btn btn-default" (click)="onColumnHeaderClicked('orderCFirst')">
               {{ formMetaData.properties.orderCFirst['x-ncg'].label }}
-              <i class="glyphicon" [class.glyphicon-arrow-down]="query.orderBy === 'orderCFirst'"
-                [class.glyphicon-arrow-up]="query.orderBy === 'orderCFirst desc'"></i>
+              <i class="glyphicon" [class.glyphicon-arrow-down]="query.orderBy === 'orderCFirst'" [class.glyphicon-arrow-up]="query.orderBy === 'orderCFirst desc'"></i>
             </button>
           </th>
-          
+
           <!--withTitleDescDefaultMetaData-->
           <th>
             <button class="btn btn-default" (click)="onColumnHeaderClicked('withTitleDescDefaultMetaData')">
               {{ formMetaData.properties.withTitleDescDefaultMetaData['x-ncg'].label }}
-              <i class="glyphicon" [class.glyphicon-arrow-down]="query.orderBy === 'withTitleDescDefaultMetaData'"
-                [class.glyphicon-arrow-up]="query.orderBy === 'withTitleDescDefaultMetaData desc'"></i>
+              <i class="glyphicon" [class.glyphicon-arrow-down]="query.orderBy === 'withTitleDescDefaultMetaData'" [class.glyphicon-arrow-up]="query.orderBy === 'withTitleDescDefaultMetaData desc'"></i>
             </button>
           </th>
-          
+
         </tr>
       </thead>
 
@@ -116,10 +100,13 @@
         <tr *ngFor="let item of listWithCount?.list">
           <!--actions-->
           <td>
-            <button id="editButton" (click)="edit(item)" class="btn btn-sm btn-primary" [attr.aria-label]="edit"><i class="fa fa-edit"></i></button>
-            <button id="deleteButton" (click)="delete(item[keyName])" class="btn btn-sm btn-danger" [attr.aria-label]="delete"><i class="fa fa-remove"></i></button>
+            <button id="editButton" (click)="edit(item)" class="btn btn-sm btn-primary" [attr.aria-label]="edit">
+              <i class="fa fa-edit"></i>
+            </button>
+            <button id="deleteButton" (click)="delete(item[keyName])" class="btn btn-sm btn-danger" [attr.aria-label]="delete">
+              <i class="fa fa-remove"></i>
+            </button>
           </td>
-          
           <!--id-->
           <td>
             {{ item.id }}
@@ -156,23 +143,23 @@
           <td>
             {{ item.withTitleDescDefaultMetaData }}
           </td>
-       </tr>
+        </tr>
       </tbody>
 
       <!--footer-->
       <tfoot class="thead-default">
         <tr>
-         <th>Actions</th>
-         <th>Id</th>
-         <th>Item Not Displayed</th>
-         <th>Item Not Generated</th>
-         <th>List Not Displayed</th>
-         <th>List Not Generated</th>
-         <th>Order A Third</th>
-         <th>Order B Second</th>
-         <th>Order C First</th>
-         <th>With Title Desc Default Meta Data</th>
-       </tr>
+          <th>Actions</th>
+          <th>Id</th>
+          <th>Item Not Displayed</th>
+          <th>Item Not Generated</th>
+          <th>List Not Displayed</th>
+          <th>List Not Generated</th>
+          <th>Order A Third</th>
+          <th>Order B Second</th>
+          <th>Order C First</th>
+          <th>With Title Desc Default Meta Data</th>
+        </tr>
       </tfoot>
     </table>
     <div>
@@ -181,12 +168,6 @@
   </div>
 </parentFilterAndPaging>
 
-<pagination class="pagination-sm" 
-  [totalItems]="paginationData.itemCount" 
-  [(ngModel)]="paginationData.currentPage" 
-  [maxSize]="paginationData.maxSize" 
-  [boundaryLinks]="paginationData.isBoundaryLinks" 
-  [rotate]="paginationData.isRotate" 
-  (pageChanged)="pageChanged($event)"
-  (numPages)="numPagesUpdated($event)"
+<pagination class="pagination-sm" [totalItems]="paginationData.itemCount" [(ngModel)]="paginationData.currentPage" [maxSize]="paginationData.maxSize"
+  [boundaryLinks]="paginationData.isBoundaryLinks" [rotate]="paginationData.isRotate" (pageChanged)="pageChanged($event)" (numPages)="numPagesUpdated($event)"
   [itemsPerPage]="query.top"></pagination>

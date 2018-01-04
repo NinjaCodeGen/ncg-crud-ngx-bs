@@ -1,4 +1,3 @@
-
 import { browser, by, element } from 'protractor';
 import { AdminView } from '../admin.po';
 import { NcgOtherListPageObject } from './ncg-other-list.po';

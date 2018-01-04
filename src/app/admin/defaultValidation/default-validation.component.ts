@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'defaultValidation',
-  providers: [],
   templateUrl: './default-validation.component.html'
 })
 

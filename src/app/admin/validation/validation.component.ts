@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'validation',
-  providers: [],
   templateUrl: './validation.component.html'
 })
 
